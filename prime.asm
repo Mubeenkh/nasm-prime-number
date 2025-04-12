@@ -4,45 +4,32 @@ global _start
 
 _start:
 
-    movzx eax, byte[number]
-    mov ebx, 2
-    
-    ; In Division
-    ; eax is the Quotiant
-    ; edx is the Remainder
+    mov bl, 2                           ; set bl to 2 (8-bits)
+
     
 loop_start:
     
+    movzx ax, byte[number]              ; set and reset ax to Number ( 16-bits)
+    
 ;-- Prime can only divide by itself and 1
-    cmp ebx, eax         
-    jge check_remainder     ; if divisor >= number, end loop
+    movzx bx, bl                        ; move bl (8-bits) to bx(16-bits) since ax is a 16-bits value
+    cmp bx, ax                          ; compare bx (16-bits) with ax (16-bits)
+    jge check_remainder                 ; if bx (16-bits Divisor) >= ax (16-bits Number), END LOOP
     
 ;-- Start if statement:
-    xor edx, edx
-    div ebx                 ; Number (eax) / Divisor (ebx)
-                            ; eax = Quotiant
-                            ; edx = Remainder
-    cmp edx, 0      
-    je not_prime            ; if remainder == 0, then not prime
+    div bl                              
+    cmp ah, 0      
+    je not_prime                        ; if ah (8-bits Remainder) == 0, then NOT PRIME
 ;-- End if statement
     
-    add ebx, 1              ; Divisor = divisor +1
-    ; movzx eax, byte[number] ; eax is no longer equal to Number
-                            ; eax became Quotiant after division
-                            ; reset eax to Number
-    jmp loop_start
+    add bl, 1                           ; bl (8-bits Divisor) = bl (8-bits Divisor) + 1
+    jmp loop_start                      ; reset loop
 
-    
 check_remainder:
-    ; cmp byte[answer], 0
-    ; je not_prime
-    ; jne prime
-    
-    cmp edx, 0
+    cmp ah, 0
     jne prime
     
 prime:
-    ; mov byte[answer], 1 ; prime = true
     mov eax, 4
     mov ebx, 1
     mov ecx, prime_msg
@@ -66,7 +53,10 @@ exit:
     int 80h
 
 section .data
-    number db 3
+
+    ; db = 8-bits 
+    ; so range of possible numbers are from 0-254
+    number db 251
     answer db 1     ; 1 means number is prime
                     ; 0 means number is NOT prime
                     ; ASCII 0x0a = LINE FEED (for new line) 
