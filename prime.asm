@@ -24,7 +24,7 @@ _start:
 
 loop_start:
 
-    movzx ax, [number]                  ; set and reset ax to Number (16-bits)
+    movzx ax, [number]                  ; set and reset ax (16-bits) to Number
 
     movzx bx, bl                        ; move bl (8-bits) to bx (16-bits) since ax is a 16-bits value
     cmp bx, ax                          ; compare bx with ax
