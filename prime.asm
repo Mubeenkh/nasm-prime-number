@@ -20,26 +20,26 @@ section .text
 global _start
 
 _start:
-    mov bl, 2                           ; set bl to 2 (8-bits)
+    mov bl, 2                           ; set bl (8-bits) to 2
 
 loop_start:
 
     movzx ax, [number]                  ; set and reset ax to Number (16-bits)
 
-    movzx bx, bl                        ; move bl (8-bits) to bx(16-bits) since ax is a 16-bits value
-    cmp bx, ax                          ; compare bx (16-bits) with ax (16-bits)
-    jge prime_print                     ; if bx (16-bits Divisor) >= ax (16-bits Number), END LOOP
+    movzx bx, bl                        ; move bl (8-bits) to bx (16-bits) since ax is a 16-bits value
+    cmp bx, ax                          ; compare bx with ax
+    jge prime_print                     ; if bx (Divisor) >= ax (Number), END LOOP
 
                                         ;------ Start if statement ------
-    div bl                              ; Divide ax (16-bits Number) by bl (8-bits Divisor)
+    div bl                              ; Divide ax (Number) by bl (Divisor)
                                         ; Quotient is stored in al (8-bits)
                                         ; Remainder is stored in ah (8-bits)
 
-    cmp ah, 0                           ; compare ah (8-bits Remainder) with 0
-    je not_prime_print                  ; if ah (8-bits Remainder) == 0, then NOT PRIME
+    cmp ah, 0                           ; compare ah (Remainder) with 0
+    je not_prime_print                  ; if ah (Remainder) == 0, then NOT PRIME
                                         ;------ End if statement ------
 
-    add bl, 1                           ; bl (8-bits Divisor) = bl (8-bits Divisor) + 1
+    add bl, 1                           ; bl (Divisor) = bl (Divisor) + 1
     jmp loop_start                      ; RESET LOOP
 
 prime_print:
