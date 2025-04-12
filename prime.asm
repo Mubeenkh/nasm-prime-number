@@ -8,16 +8,17 @@ _start:
 
 loop_start:
     
-    movzx ax, byte[number]              ; set and reset ax to Number ( 16-bits)
+    movzx ax, byte[number]              ; set and reset ax to Number (16-bits)
     
     movzx bx, bl                        ; move bl (8-bits) to bx(16-bits) since ax is a 16-bits value
     cmp bx, ax                          ; compare bx (16-bits) with ax (16-bits)
     jge prime_print                     ; if bx (16-bits Divisor) >= ax (16-bits Number), END LOOP
 
-    
                                         ;------ Start if statement:
-    div bl                              
-    cmp ah, 0      
+    div bl                              ; divide ax (16-bits Number) by bl (8-bits Divisor)
+                                        ; quotient is stored in ax (16-bits) 
+                                        ; remainder is stored in ah (8-bits)
+    cmp ah, 0                           ; compare ah (8-bits Remainder) with 0
     je not_prime_print                  ; if ah (8-bits Remainder) == 0, then NOT PRIME
                                         ;------ End if statement
     
@@ -42,7 +43,7 @@ prime:
     jmp exit
 
 not_prime:
-    mov byte[answer], 0 ; prime = false
+    mov [answer], 0 ; prime = false
     mov eax, 4
     mov ebx, 1
     mov ecx, not_prime_msg
