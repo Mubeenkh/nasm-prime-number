@@ -43,7 +43,7 @@ prime:
     jmp exit
 
 not_prime:
-    mov [answer], 0 ; prime = false
+    mov byte [answer], 0 ; prime = false
     mov eax, 4
     mov ebx, 1
     mov ecx, not_prime_msg
