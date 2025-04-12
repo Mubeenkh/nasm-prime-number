@@ -6,12 +6,12 @@
 
 section .data
 
-    ; db = 8-bits 
+    ; db = 8-bits
     ; so range of possible 'number' is from 0-255
     number db 251
     answer db 1                         ; 1 means number is prime
                                         ; 0 means number is NOT prime
-                     
+
     prime_msg db 'Number is prime', 0x0a; ASCII 0x0a = LINE FEED (for new line)
     not_prime_msg db 'Number is NOT prime',0x0a
 
@@ -34,7 +34,7 @@ loop_start:
     div bl                              ; Divide ax (16-bits Number) by bl (8-bits Divisor)
                                         ; Quotient is stored in al (8-bits)
                                         ; Remainder is stored in ah (8-bits)
-    
+
     cmp ah, 0                           ; compare ah (8-bits Remainder) with 0
     je not_prime_print                  ; if ah (8-bits Remainder) == 0, then NOT PRIME
                                         ;------ End if statement ------
@@ -43,11 +43,11 @@ loop_start:
     jmp loop_start                      ; RESET LOOP
 
 prime_print:
-    call prime 
+    call prime
 
 not_prime_print:
     call not_prime
-    
+
 ; Subroutine 1
 prime:
     mov eax, 4
@@ -56,7 +56,7 @@ prime:
     mov edx, 16
     int 80h
     jmp exit
-    
+
 ; Subroutine 2
 not_prime:
     mov byte [answer], 0 ; prime = false
@@ -65,7 +65,7 @@ not_prime:
     mov ecx, not_prime_msg
     mov edx, 20
     int 80h
-    jmp exit    
+    jmp exit
 
 exit:
     mov eax, 1
