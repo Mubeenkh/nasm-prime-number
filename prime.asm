@@ -6,28 +6,32 @@ _start:
 
     mov bl, 2                           ; set bl to 2 (8-bits)
 
-    
 loop_start:
     
     movzx ax, byte[number]              ; set and reset ax to Number ( 16-bits)
     
-;-- Prime can only divide by itself and 1
     movzx bx, bl                        ; move bl (8-bits) to bx(16-bits) since ax is a 16-bits value
     cmp bx, ax                          ; compare bx (16-bits) with ax (16-bits)
-    jge check_remainder                 ; if bx (16-bits Divisor) >= ax (16-bits Number), END LOOP
+    jge prime_print                     ; if bx (16-bits Divisor) >= ax (16-bits Number), END LOOP
+
     
-;-- Start if statement:
+                                        ;------ Start if statement:
     div bl                              
     cmp ah, 0      
-    je not_prime                        ; if ah (8-bits Remainder) == 0, then NOT PRIME
-;-- End if statement
+    je not_prime_print                  ; if ah (8-bits Remainder) == 0, then NOT PRIME
+                                        ;------ End if statement
     
     add bl, 1                           ; bl (8-bits Divisor) = bl (8-bits Divisor) + 1
-    jmp loop_start                      ; reset loop
+    jmp loop_start                      ; RESET LOOP
 
-check_remainder:
-    cmp ah, 0
-    jne prime
+
+; Subroutine 1
+prime_print:
+    call prime 
+
+; Subroutine 2
+not_prime_print:
+    call not_prime
     
 prime:
     mov eax, 4
@@ -50,13 +54,13 @@ not_prime:
 exit:
     mov eax, 1
     mov ebx, 0
-    int 80h
+    int 0x80
 
 section .data
 
     ; db = 8-bits 
     ; so range of possible numbers are from 0-254
-    number db 251
+    number db 254
     answer db 1     ; 1 means number is prime
                     ; 0 means number is NOT prime
                     ; ASCII 0x0a = LINE FEED (for new line) 
