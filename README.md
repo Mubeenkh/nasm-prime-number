@@ -125,4 +125,4 @@ where,
 AL = 3 = 0000 0011
 AH = 1 = 0000 0001
 ```
-This means that ```AX = 0000 0001 0000 0011 = 259``` u"\u2260" ```Number = 7```
+This means that ```AX = 0000 0001 0000 0011 = 259```, which is not equal to the original ```Number = 7```
