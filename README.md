@@ -2,8 +2,8 @@
 Comp 228: Prime Number using Nasm Intel x86
 
 ## Install NASM
-```$ sudo apt update```
-```$ sudo apt install nasm```
+```$ sudo apt update``` <br> 
+```$ sudo apt install nasm``` <br> 
 ```$ nasm --version```
 
 ## Install GDB (GNU Debugger)
@@ -27,27 +27,25 @@ Comp 228: Prime Number using Nasm Intel x86
 
 ## How to Debug
 
-
-
 - Load the program in the debugger: <br> 
     ```gdb ./helloWorld```
 
-- Set Intel Syntax
+- Set Intel Syntax <br> 
     ```(gdb) set disassembly-flavor intel```
 
-- Set a breakpoint
+- Set a breakpoint <br> 
     ```(gdb) break _start```
 
-- Run the program
+- Run the program <br> 
     ```(gdb) run```
 
-- View Assembly and Registers
+- View Assembly and Registers <br> 
     ```(gdb) layout asm (or a)```
     ```(gdb) layout regs```
 
-- Perform next step
+- Perform next step <br> 
     ```(gdb) stepi (or nexti)```
 
-- Quit the program and debugger
+- Quit the program and debugger <br> 
     ```(gdb) q```
 
