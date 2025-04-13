@@ -50,17 +50,17 @@ not_prime_print:
 
 ; Subroutine 1
 prime:
-    mov eax, 4
-    mov ebx, 1
-    mov ecx, prime_msg
-    mov edx, 16
+    mov eax, 4                          ; set syscall number for sys_write
+    mov ebx, 1                          ; set file descriptor to stdout
+    mov ecx, prime_msg                  ; load address of message to print 
+    mov edx, 16                         ; set length of message 
     int 80h
     jmp exit
 
 ; Subroutine 2
 not_prime:
-    mov byte [answer], 0 ; prime = false
-    mov eax, 4
+    mov byte [answer], 0                ; prime = false
+    mov eax, 4                          
     mov ebx, 1
     mov ecx, not_prime_msg
     mov edx, 20
@@ -68,6 +68,6 @@ not_prime:
     jmp exit
 
 exit:
-    mov eax, 1
-    mov ebx, 0
-    int 0x80
+    mov eax, 1                          ; set syscall number for sys_exit 
+    mov ebx, 0                          ; set exit code to 0
+    int 0x80                            ; call kernel   
