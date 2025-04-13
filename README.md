@@ -68,7 +68,8 @@ Comp 228: Prime Number using Nasm Intel x86
 ## Useful Information
 
 # Code to exit program
-```mov eax, 1                          ; set syscall number for sys_exit 
+```
+mov eax, 1                          ; set syscall number for sys_exit 
 mov ebx, 0                          ; set exit code to 0
 int 0x80                            ; call kernel
 ```
