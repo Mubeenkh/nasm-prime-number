@@ -111,7 +111,7 @@ We are doing the same with ```BL``` and ```BX```. ```BL``` is set to 2  ```mov b
 ```
 
 When performing the division, the program will always divide ```AL``` by ```BL```, since we specified the ```Number``` variable to have a 8 bits.
-Why? The highest value ```Number``` can have is ```1111 1111```, meaning ```AX``` would be equal to ````0000 0000 1111 1111```, where ```AH = 0000 0000``` and ```AL = 1111 1111```.
+Why? The highest value ```Number``` can have is ```1111 1111```, meaning ```AX``` would be equal to ```0000 0000 1111 1111```, where ```AH = 0000 0000``` and ```AL = 1111 1111```.
 ```
     div bl
 ```
