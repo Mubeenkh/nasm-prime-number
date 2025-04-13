@@ -49,3 +49,26 @@ Comp 228: Prime Number using Nasm Intel x86
 - Quit the program and debugger <br> 
     ```(gdb) q```
 
+- How to view data in register <br>
+    Ex: ```print $al```
+
+- How to view data in *number* and *answer* memory location <br> 
+    Ex: ```x/1xb &answer```
+
+## Registers being used
+
+```AX```: 16-bits register <br>
+- ```AL```: first 8 bits, works as the Quotient when performing division
+- ```AH```: last 8 bits, works as the Remainder when performing division
+
+```BX```: 16-bits register <br>
+- ```BL```: first 8 bits, works as the Dividor in this program
+
+
+## Useful Information
+
+# Code to exit program
+```mov eax, 1                          ; set syscall number for sys_exit 
+mov ebx, 0                          ; set exit code to 0
+int 0x80                            ; call kernel
+```
