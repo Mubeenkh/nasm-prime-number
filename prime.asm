@@ -31,7 +31,7 @@ loop_start:
     
     movzx bx, bl                        ; move bl (8-bits) to bx (16-bits) since ax is a 16-bits value
     cmp bx, ax                          ; compare bx with ax
-    je prime_print                     ; if bx (Divisor) = ax (Number), END LOOP
+    je prime_print                      ; if bx (Divisor) = ax (Number), END LOOP
 
                                         ;------ Start if statement ------
     div bl                              ; Divide ax (Number) by bl (Divisor)

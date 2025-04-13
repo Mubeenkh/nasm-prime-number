@@ -1,5 +1,5 @@
 # nasm-prime-number
-Comp 228: Prime Number using Nasm Intel x86
+Comp 228: Prime Number using Nasm Intel x86 on Linux
 
 ## Install NASM
 ```$ sudo apt update``` <br> 
