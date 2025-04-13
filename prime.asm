@@ -60,7 +60,7 @@ prime:
 ; Subroutine 2
 not_prime:
     mov byte [answer], 0                ; prime = false
-    mov eax, 4                          
+    mov eax, 4
     mov ebx, 1
     mov ecx, not_prime_msg
     mov edx, 20
