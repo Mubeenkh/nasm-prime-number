@@ -2,7 +2,7 @@
 ; Rachelle Badua ID 40313723
 ; Mubeen Khan ID 40313724
 ; Mert Salvador ID 40316307
-; Jericho Nieva ID #########
+; Jericho Nieva ID 40330267
 
 section .data
 
